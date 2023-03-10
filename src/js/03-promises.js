@@ -28,11 +28,11 @@ function createPromise(position, delay) {
 }
 
 function getPromise(amount, delay, step) {
-  for (let i = 1; i <= amount; i += 1) {
+  for (let i = 0; i < amount; i += 1) {
     const timeout = delay + step * i;
 
     setTimeout(() => {
-      createPromise(i, timeout)
+      createPromise((i += 1), timeout)
         .then(({ position, delay }) => {
           Notiflix.Notify.success(
             `✅ Fulfilled promise ${position} in ${delay}ms`
